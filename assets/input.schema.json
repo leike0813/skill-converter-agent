@@ -4,10 +4,12 @@
     "properties": {
         "source_skill_package": {
             "type": "string",
-            "description": "Path to source skill package zip. Used only when source_type=zip.",
+            "description": "Path to source skill package zip.",
+            "x-input-source": "file",
             "extensions": [
                 ".zip"
             ]
         }
-    }
+    },
+    "required": ["source_skill_package"]
 }

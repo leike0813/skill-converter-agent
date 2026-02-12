@@ -38,10 +38,6 @@
             "x-type": "artifact",
             "x-role": "conversion_report",
             "x-filename": "conversion_report.json"
-        },
-        "converted_skill_id": {
-            "type": "string",
-            "description": "Resolved skill id in the generated package."
         }
     },
     "required": [
@@ -80,11 +76,6 @@
                             "required": [
                                 "conversion_report_path"
                             ]
-                        },
-                        {
-                            "required": [
-                                "converted_skill_id"
-                            ]
                         }
                     ]
                 }
@@ -106,9 +97,11 @@
             },
             "then": {
                 "required": [
-                    "converted_skill_directory_path",
-                    "conversion_report_path",
-                    "converted_skill_id"
+                    "converted_skill_package_path",
+                    "conversion_report_path"
+                ],
+                "not": [
+                    "failure_reason"
                 ]
             }
         }

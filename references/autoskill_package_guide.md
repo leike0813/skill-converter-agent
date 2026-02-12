@@ -77,6 +77,15 @@ AutoSkill 包是“可被 Skill-Runner 稳定自动执行”的 Skill 包。
 - `parameter.schema.json`：定义标量配置参数（string/number/bool 等）。
 - `output.schema.json`：定义结构化输出与 artifact 字段。
 
+### Input 字段规范
+
+在 `input.schema.json` 的属性里，对输入项目字段标记 `x-input-source`：
+
+- `x-input-source`: `file`（默认）：文件型输入，prompt 中给出文件路径，由 Agent 读取。
+- `x-input-source`: `inline`：直接型输入，直接加入 prompt中。
+
+`required` 字段必须出现在 prompt 中（或语义可解析），否则 skill 执行直接报错。
+
 ### Artifact 字段规范
 
 在 `output.schema.json` 的属性里，对文件产物字段标记：
@@ -110,8 +119,8 @@ AutoSkill 包是“可被 Skill-Runner 稳定自动执行”的 Skill 包。
    将交互式模糊描述改为可自动执行的步骤，并显式要求返回结构化 JSON。
 
 4. 编写三类 schema  
-   - `input.schema.json`：只放文件输入
-   - `parameter.schema.json`：只放配置参数
+   - `input.schema.json`：只放输入（例如需要操作的文件、需要处理的数据等）
+   - `parameter.schema.json`：只放配置参数（影响执行行为的参数，而非直接处理的数据）
    - `output.schema.json`：放结构化输出与 artifact 定义
 
 5. 编写 `runner.json`  
