@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Embedded SkillPackageValidator for skill-converter-agent runtime use."""
+"""Updated embedded skill package validator for manual sync to skill-converter-agent."""
 
 from __future__ import annotations
 
@@ -9,11 +9,11 @@ import re
 import shutil
 import zipfile
 from pathlib import Path
-from typing import Any, Optional, Tuple
+from typing import Optional, Tuple
 
 
 class EmbeddedSkillPackageValidator:
-    """Runtime-independent validator equivalent to Skill Runner install checks."""
+    """Runtime-independent validator equivalent to current Skill Runner install checks."""
 
     REQUIRED_FILES = (
         "SKILL.md",
@@ -123,8 +123,8 @@ class EmbeddedSkillPackageValidator:
             raise ValueError("runner.json must define a non-empty engines list")
 
         artifacts = runner.get("artifacts")
-        if not isinstance(artifacts, list) or not artifacts:
-            raise ValueError("runner.json must define a non-empty artifacts contract")
+        if artifacts is not None and not isinstance(artifacts, list):
+            raise ValueError("runner.json artifacts must be a list when provided")
 
         version = runner.get("version")
         if require_version:
@@ -176,4 +176,3 @@ class EmbeddedSkillPackageValidator:
             raise ValueError(f"Unsafe zip entry path: {clean_name}")
         if len(parts) > 0 and parts[0].endswith(":"):
             raise ValueError(f"Unsafe zip entry path: {clean_name}")
-
