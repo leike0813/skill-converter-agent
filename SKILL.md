@@ -116,7 +116,7 @@ description: 目录优先的 Skill 转换代理，将普通 skill 改造为 Skil
    - 失败则整体失败，并返回校验原因。
 
 11. **生成转换报告**
-   - 生成转换报告，写入 Skill 包目录中的 `references/conversion_report.md`。
+   - 生成转换报告，写入 `converted_skill_directory` (Skill 包目录)中的 `references/conversion_report.md`。在 `{{ run_dir }}/artifacts/` 目录中抄写一份副本。
 
 12. **zip 收敛（仅自动执行模式）**
    - 当输入源为 skill zip 包（处于自动执行模式）时，执行打包：
@@ -138,7 +138,7 @@ description: 目录优先的 Skill 转换代理，将普通 skill 改造为 Skil
   - `status`: `"succeeded"`
   - `classification`: 成功分类之一
   - `converted_skill_directory_path`: 转换后目录路径
-  - `conversion_report_path`: 转换报告路径
+  - `conversion_report_path`: 转换报告路径，即`{{ run_dir }}/artifacts/` 目录中的转换报告副本。
   - `converted_skill_package_path`: 可选，仅在执行zip打包时提供
 
 ## 参考规则

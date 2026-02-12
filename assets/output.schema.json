@@ -34,10 +34,10 @@
         },
         "conversion_report_path": {
             "type": "string",
-            "description": "Path to conversion report JSON.",
+            "description": "Path to conversion report.",
             "x-type": "artifact",
             "x-role": "conversion_report",
-            "x-filename": "conversion_report.json"
+            "x-filename": "conversion_report.md"
         }
     },
     "required": [
@@ -100,9 +100,11 @@
                     "converted_skill_package_path",
                     "conversion_report_path"
                 ],
-                "not": [
-                    "failure_reason"
-                ]
+                "not": {
+                    "required": [
+                        "failure_reason"
+                    ]
+                }
             }
         }
     ]
