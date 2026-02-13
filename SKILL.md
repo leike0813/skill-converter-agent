@@ -91,6 +91,7 @@ description: 目录优先的 Skill 转换代理，将普通 skill 改造为 Skil
      - 明确输入、参数、输出、失败路径；
      - 消除“请用户在执行中临时决策”的模糊指令，改为可参数化行为；
      - 明确最终输出 JSON 的稳定结构。
+     - **不要在 `SKILL.md` 中注入 `Skill-Runner` 及 `AutoSkill` 协议的相关信息，这些信息与 Agent Skill 本体无关。**
    - 对 schema 的补丁重点：
      - 只保留必要字段；
      - artifact 使用 `x-type=artifact`、`x-role`、`x-filename` 明确约束；
